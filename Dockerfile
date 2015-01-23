@@ -17,6 +17,6 @@ RUN mkdir -p $TYPO3CMS_REPO_DIR && \
 VOLUME $TYPO3CMS_REPO_DIR
 
 # entrypoint MUST be set as JSON if you want exec "$@" support
-ONBUILD RUN /opt/typo3cms-builder/prepare-typo3cms-instance
+ONBUILD RUN /opt/typo3cms-builder/prepare-typo3cms-instance.sh
 ONBUILD ENTRYPOINT ["/entrypoint.sh"]
 CMD [""]
