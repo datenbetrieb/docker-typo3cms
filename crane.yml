@@ -1,0 +1,8 @@
+containers:
+    typo3cmsbuild:
+        dockerfile: .
+        image: datenbetrieb/typo3cmsbuilder
+        run:
+            rm: true
+            cmd: "ls -alth /"
+
