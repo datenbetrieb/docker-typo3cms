@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #
 # Initialise/configure TYPO3 app pre-installed during 'docker build'
