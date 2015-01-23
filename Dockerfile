@@ -1,5 +1,5 @@
 # DOCKER-VERSION 1.0.0
-FROM datenbetrieb/nginx:master
+FROM datenbetrieb/nginx:jessie
 MAINTAINER Peter Niederlag "peter.niederlag@datenbetrieb.de"
 
 # inject stuff into the container
