@@ -4,5 +4,4 @@ containers:
         image: datenbetrieb/typo3cmsbuilder
         run:
             rm: true
-            cmd: "ls -alth /"
-
+            cmd: "/bin/bash"
