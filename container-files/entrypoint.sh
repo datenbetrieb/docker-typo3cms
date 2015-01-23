@@ -9,16 +9,16 @@ set -e
 set -u
 
 # must match structure inside container-files from docker repo
-source /opt/build-typo3-app/include-functions.sh
-source /opt/build-typo3-app/include-variables.sh
+. /opt/typo3cms-docker-helper/include-functions.sh
+. /opt/typo3cms-docker-helper/include-variables.sh
 
 # Internal variables - there is no need to change them
-CWD=$(pwd) # Points to /build-typo3-app/ directory, where this script is located
-WEB_SERVER_ROOT="/data/www"
+BUILDER_SOURCE_DIR=/opt/typo3cms-docker-helper # Points to /opt/typo3cms-docker-helper/ directory, where this script is located
+WEB_SERVER_ROOT="/var/www"
 APP_ROOT="${WEB_SERVER_ROOT}/${T3APP_NAME}"
-INSTALLATION_TYPE="flow" # Default installation type, will be set later on if different one (e.g. Neos) is detected
-SETTINGS_SOURCE_FILE="${CWD}/Settings.yaml"
-VHOST_SOURCE_FILE="${CWD}/vhost.conf"
+#INSTALLATION_TYPE="git" # Default installation type, will be set later on if different one (e.g. Neos) is detected
+#SETTINGS_SOURCE_FILE="${BUILDER_SOURCE_DIR}/Settings.yaml"
+VHOST_SOURCE_FILE="${BUILDER_SOURCE_DIR}/vhost.conf"
 VHOST_FILE="/data/conf/nginx/hosts.d/${T3APP_NAME}.conf"
 DB_ENV_MARIADB_PASS=${DB_ENV_MARIADB_PASS:="password"}
 DB_PORT_3306_TCP_ADDR=${DB_PORT_3306_TCP_ADDR:="127.0.0.1"}
@@ -26,7 +26,7 @@ DB_PORT_3306_TCP_PORT=${DB_PORT_3306_TCP_PORT:="3306"}
 MYSQL_CMD_AUTH_PARAMS="--user=admin --password=$DB_ENV_MARIADB_PASS --host=$DB_PORT_3306_TCP_ADDR --port=$DB_PORT_3306_TCP_PORT"
 CONTAINER_IP=$(ip -4 addr show eth0 | grep inet | cut -d/ -f1 | awk '{print $2}')
 BASH_RC_FILE="$WEB_SERVER_ROOT/.bash_profile"
-BASH_RC_SOURCE_FILE="$CWD/.bash_profile"
+BASH_RC_SOURCE_FILE="$BUILDER_SOURCE_DIR/.bash_profile"
 
 
 

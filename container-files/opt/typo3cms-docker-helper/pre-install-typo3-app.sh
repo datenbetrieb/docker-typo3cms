@@ -13,7 +13,7 @@ set -e
 set -u
 
 # Needs to be absolute as user can call this script from Dockerfile in multiple ways...
-source /build-typo3-app/include-variables.sh
+source /typo3cms-docker-helper/include-variables.sh
 
 echo
 echo "Installing TYPO3 app from $T3APP_BUILD_REPO_URL ($T3APP_BUILD_BRANCH) repository..."
