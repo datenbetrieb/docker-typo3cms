@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #
 # Pre-install TYPO3 app from $T3APP_BUILD_REPO_URL
@@ -13,7 +13,7 @@ set -e
 set -u
 
 # Needs to be absolute as user can call this script from Dockerfile in multiple ways...
-source /typo3cms-docker-helper/include-variables.sh
+source /opt/typo3cms-builder/include-variables.sh
 
 echo
 echo "Installing TYPO3 app from $T3APP_BUILD_REPO_URL ($T3APP_BUILD_BRANCH) repository..."

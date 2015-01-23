@@ -9,11 +9,11 @@ set -e
 set -u
 
 # must match structure inside container-files from docker repo
-. /opt/typo3cms-docker-helper/include-functions.sh
-. /opt/typo3cms-docker-helper/include-variables.sh
+. /opt/typo3cms-builder/include-functions.sh
+. /opt/typo3cms-builder/include-variables.sh
 
 # Internal variables - there is no need to change them
-BUILDER_SOURCE_DIR=/opt/typo3cms-docker-helper # Points to /opt/typo3cms-docker-helper/ directory, where this script is located
+BUILDER_SOURCE_DIR=/opt/typo3cms-builder # Points to /opt/typo3cms-builder/ directory, where this script is located
 WEB_SERVER_ROOT="/var/www"
 APP_ROOT="${WEB_SERVER_ROOT}/${T3APP_NAME}"
 #INSTALLATION_TYPE="git" # Default installation type, will be set later on if different one (e.g. Neos) is detected
