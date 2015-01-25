@@ -32,7 +32,11 @@ cd $INSTALLED_PACKAGE_NAME
 # Do composer install
 git checkout $T3APP_BUILD_BRANCH
 git log -10 --pretty=format:"%h %an %cr: %s" --graph
-COMPOSER_PROCESS_TIMEOUT=900 composer install $T3APP_BUILD_COMPOSER_PARAMS
+
+# run composer install if composer.json is available
+if [[ -e "$CDW/$INSTALLED_PACKAGE_NAME/composer.json" ]]; then
+    COMPOSER_PROCESS_TIMEOUT=900 composer install $T3APP_BUILD_COMPOSER_PARAMS
+fi
 
 # If the project contains executable build.sh in the root directory
 # it will be run during 'docker build' process. Note: it's OK to run is as root 
