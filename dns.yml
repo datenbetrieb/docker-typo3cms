@@ -1,0 +1,8 @@
+dns:
+    image: iverberk/docker-spy
+    ports:
+        - "53:53/udp"
+        - "53:53"
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock:ro
+
