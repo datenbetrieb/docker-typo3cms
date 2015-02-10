@@ -1,8 +1,10 @@
-dns:
-    image: iverberk/docker-spy
+skydns:
+    image: crosbymichael/skydns
     ports:
         - "53:53/udp"
-        - "53:53"
-    volumes:
-        - /var/run/docker.sock:/var/run/docker.sock:ro
-
+    command: ["-nameserver", "8.8.8.8:53", "-domain", "docker"]
+skydock:
+    image: crosbymichael/skydock
+    volumes: 
+        - /var/run/docker.sock:/docker.sock
+    command: ["-ttl", "30", "-environment", "dev", "-s", "/docker.sock", "-domain", "docker", "-name", "typo3cms_skydock_1"]
