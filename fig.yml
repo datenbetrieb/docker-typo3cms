@@ -24,6 +24,7 @@ php:
 #  privileged: true
 
 web:  
+  hostname: cmstest
   image: datenbetrieb/nginx
   volumes_from:
     - cmstest
