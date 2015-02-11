@@ -1,7 +1,0 @@
-dnsdock:
-    imagse: tonistiigi/dnsdock
-    volumes:
-        -/var/run/docker.sock:/var/run/docker.sock
-    ports:
-        - 172.17.42.1:53:53/udp
-
