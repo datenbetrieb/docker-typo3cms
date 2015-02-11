@@ -14,4 +14,4 @@ registrator:
         - /var/run/docker.sock:/tmp/docker.sock
     links:
         - consul:consul
-    command: ["consul://consul:8500","]
+    command: ["consul://consul:8500", "-internal"]
