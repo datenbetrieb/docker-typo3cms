@@ -6,7 +6,7 @@ cmsdata:
 #  privileged: true
 
 db:
-  hostname: mysql1
+  #hostname: mysql1
   image: mysql
   #volumes:
   #- var/lib/mysql
@@ -17,7 +17,7 @@ db:
 #  privileged: true
 
 php:
-  hostname: phpfpm
+  #hostname: phpfpm
   image: datenbetrieb/php-fpm
   volumes_from:
     - cmsdata
@@ -26,7 +26,7 @@ php:
 #  privileged: true
 
 web:  
-  hostname: cmstest
+  #hostname: cmstest
   image: datenbetrieb/nginx
   volumes_from:
     - cmsdata
