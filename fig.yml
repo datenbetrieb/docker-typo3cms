@@ -1,11 +1,12 @@
-cmstest:  
+cmsdata:  
   image: datenbetrieb/debian
   volumes:
     - data/www:/data/www/
     - data/nginx/sites-enabled:/etc/nginx/sites-enabled
 #  privileged: true
 
-db:  
+db:
+  hostname: mysql1
   image: mysql
   #volumes:
   #- var/lib/mysql
@@ -15,10 +16,11 @@ db:
     - "3306"
 #  privileged: true
 
-php:  
+php:
+  hostname: phpfpm
   image: datenbetrieb/php-fpm
   volumes_from:
-    - cmstest
+    - cmsdata
   links:
     - db:db
 #  privileged: true
@@ -27,11 +29,12 @@ web:
   hostname: cmstest
   image: datenbetrieb/nginx
   volumes_from:
-    - cmstest
+    - cmsdata
   links:
     - php:php-fpm
   ports:
-    - "4242:80"
+    - "80"
+    - "443"
 #  privileged: true
 
 #composer:  
