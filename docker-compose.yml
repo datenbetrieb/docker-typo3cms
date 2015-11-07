@@ -1,8 +1,7 @@
 application:
-  image: datenbetrieb/debian
+    image: datenbetrieb/debian:jessie
   volumes:
     - ./application:/var/www/cms/
-    - ./data/nginx/sites-enabled:/etc/nginx/sites-enabled
 #  privileged: true
 
 db:
@@ -16,7 +15,7 @@ db:
     - "3306"
 #  privileged: true
 
-php:
+fpm:
   #hostname: phpfpm
   image: php:5.5-fpm
   volumes_from:
@@ -27,11 +26,13 @@ php:
 
 web:  
   #hostname: cmstest
-  image: nginx
+  image: datenbetrieb/nginx:jessie
+  volumes:
+    - ./sites:/etc/nginx/sites-enabled
   volumes_from:
     - application
   links:
-    - php:php-fpm
+    - fpm:fpm
   ports:
     - "80"
     - "443"
