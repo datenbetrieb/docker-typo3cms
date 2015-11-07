@@ -2,8 +2,8 @@
 	"repositories": [
 		{ "type": "composer", "url": "http://composer.typo3.org/" }
 	],
-	"name": "typo3/cms-base-distribution",
-	"description" : "TYPO3 CMS Base Distribution",
+	"name": "datenbetrieb/poc-cms-distribution",
+	"description" : "TYPO3 CMS Proof of Concept Datenbetrieb Distribution",
 	"license": "GPL-2.0+",
 	"require": {
 		"typo3/cms": "dev-master"
