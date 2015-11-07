@@ -1,5 +1,5 @@
 application:
-    image: datenbetrieb/debian:jessie
+  image: datenbetrieb/debian:jessie
   volumes:
     - ./application:/var/www/cms/
 #  privileged: true
