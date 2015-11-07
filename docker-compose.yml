@@ -1,8 +1,8 @@
 cmsdata:  
   image: datenbetrieb/debian
   volumes:
-    - data/www:/data/www/
-    - data/nginx/sites-enabled:/etc/nginx/sites-enabled
+    - ./data/www:/data/www/
+    - ./data/nginx/sites-enabled:/etc/nginx/sites-enabled
 #  privileged: true
 
 db:
