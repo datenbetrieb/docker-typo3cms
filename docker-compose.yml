@@ -18,7 +18,7 @@ db:
 
 php:
   #hostname: phpfpm
-  image: datenbetrieb/php-fpm
+  image: php:5.5-fpm
   volumes_from:
     - cmsdata
   links:
@@ -27,7 +27,7 @@ php:
 
 web:  
   #hostname: cmstest
-  image: datenbetrieb/nginx
+  image: nginx
   volumes_from:
     - cmsdata
   links:
@@ -35,6 +35,9 @@ web:
   ports:
     - "80"
     - "443"
+  environment:
+    - VHOST_NAME=cmstest.docker
+    - VHOST_ALIAS=unbekannt1.docker machmal.dev
 #  privileged: true
 
 #composer:  
