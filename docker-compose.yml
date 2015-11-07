@@ -1,4 +1,4 @@
-cmsdata:  
+application:
   image: datenbetrieb/debian
   volumes:
     - ./data/www:/data/www/
@@ -20,7 +20,7 @@ php:
   #hostname: phpfpm
   image: php:5.5-fpm
   volumes_from:
-    - cmsdata
+    - application
   links:
     - db:db
 #  privileged: true
@@ -29,7 +29,7 @@ web:
   #hostname: cmstest
   image: nginx
   volumes_from:
-    - cmsdata
+    - application
   links:
     - php:php-fpm
   ports:
