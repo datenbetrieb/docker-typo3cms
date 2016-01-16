@@ -1,1 +1,5 @@
 http://xx.typo3cms_web_1.nginx.docker
+
+# starten und aktualisieren
+docker-compose --x-networking up -d
+docker exec --tty -i typo3cms_php_1 /bin/bash

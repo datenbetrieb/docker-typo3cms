@@ -1,47 +1,38 @@
 application:
-  image: datenbetrieb/debian:jessie
+  image: tianon/true
   volumes:
     - ./application:/var/www/cms/
 #  privileged: true
 
 db:
-  #hostname: mysql1
   image: mysql
-  #volumes:
-  #- var/lib/mysql
   environment:
     - MYSQL_ROOT_PASSWORD=udednlgvfx
   ports:
     - "3306"
-#  privileged: true
 
-fpm:
-  #hostname: phpfpm
-  image: php:5.5-fpm
+php:
+  image: datenbetrieb/php:jessie
   volumes_from:
     - application
-  links:
-    - db:db
-#  privileged: true
+  ports:
+    - "9000"
 
-web:  
+web:
   #hostname: cmstest
   image: datenbetrieb/nginx:jessie
   volumes:
     - ./sites:/etc/nginx/sites-enabled
   volumes_from:
     - application
-  links:
-    - fpm:fpm
   ports:
     - "80"
     - "443"
   environment:
     - VHOST_NAME=cmstest.docker
     - VHOST_ALIAS=unbekannt1.docker machmal.dev
-#  privileged: true
 
-#composer:  
+#composer:
 #  image: datenbetrieb/composer
 #  volumes_from:
 #    - data
